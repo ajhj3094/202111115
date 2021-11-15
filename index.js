@@ -16,8 +16,11 @@ bot.on('message', async (event) => {
       const $ = cheerio.load(data)
       const replies = []
       for (let i = 0; i < $('#go .col-lg-3.col-md-6').length; i++) {
-        replies.push(`課程名稱:\n${$('#go .col-lg-3.col-md-6').eq(i).find('h4').text()}\n
-報名資訊:\n${$('#go .col-lg-3.col-md-6').eq(3).find('.card-description').text().trim().replace(/\t/g, '')}`)
+        replies.push(`
+          課程名稱:\n
+          ${$('#go .col-lg-3.col-md-6').eq(i).find('h4').text()}\n
+          報名資訊:
+          \n${$('#go .col-lg-3.col-md-6').eq(i).find('.card-description').text().trim().replace(/\t/g, '')}`)
       }
       event.reply(replies)
     } catch (error) {
